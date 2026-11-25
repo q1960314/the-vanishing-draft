@@ -1,0 +1,279 @@
+/* The Vanishing Draft — dark desk (default) + light parchment.
+   Gothic lives in the decoration layer only: thin borders, serif headings,
+   candle-amber accent. Body text stays clean and high-contrast. */
+
+:root {
+  --font-body: Georgia, "Times New Roman", "Songti SC", serif;
+  --font-ui: Georgia, "Times New Roman", serif;
+}
+
+[data-theme="dark"] {
+  --bg: #171a17;
+  --paper: #1f241f;
+  --paper-edge: #3a443a;
+  --ink: #e8e2d4;
+  --ink-dim: #b9b3a4;
+  --accent: #d9a441;
+  --accent-ink: #171a17;
+  --ghost: #7d8a7d;
+  --danger: #c96a5a;
+  --input-bg: #141714;
+  --input-edge: #4a554a;
+}
+
+[data-theme="light"] {
+  --bg: #ece5d3;
+  --paper: #f7f2e4;
+  --paper-edge: #c9bd9c;
+  --ink: #2b2620;
+  --ink-dim: #5d564a;
+  --accent: #8a5a17;
+  --accent-ink: #f7f2e4;
+  --ghost: #8a938a;
+  --danger: #8f2f22;
+  --input-bg: #fffdf6;
+  --input-edge: #b3a684;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+.page-head {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 20px 8px;
+  text-align: center;
+}
+
+.page-head h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.tagline { color: var(--ink-dim); margin: 8px 0 16px; }
+
+#theme-toggle {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--paper-edge);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}
+
+#theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8px 20px 40px;
+}
+
+section {
+  background: var(--paper);
+  border: 1px solid var(--paper-edge);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-top: 18px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+#status {
+  font-weight: bold;
+  margin-bottom: 10px;
+  min-height: 1.6em;
+}
+
+#status.haunting { color: var(--danger); }
+
+#editor {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  background: var(--input-bg);
+  color: var(--ink);
+  border: 1px solid var(--input-edge);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+#editor:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+#meter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 10px;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+}
+
+#meter strong { color: var(--ink); }
+
+#actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+#actions label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--ink-dim);
+  font-size: 0.95rem;
+}
+
+#book-title {
+  background: var(--input-bg);
+  color: var(--ink);
+  border: 1px solid var(--input-edge);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  width: 220px;
+}
+
+button {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--paper-edge);
+  background: transparent;
+  color: var(--ink);
+}
+
+button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+#bind-book {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  font-weight: bold;
+}
+
+#bind-book:hover:not(:disabled) { color: var(--accent-ink); filter: brightness(1.1); }
+
+/* Manuscript: one span per word. Fading is a class, not a repaint. */
+#manuscript {
+  font-size: 1.15rem;
+  line-height: 2;
+  min-height: 2em;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+#manuscript .w { transition: opacity 0.6s ease, color 0.6s ease; }
+
+#manuscript .w.fading { opacity: 0.6; }
+
+#manuscript .w.ghost {
+  opacity: 0.25;
+  color: var(--ghost);
+}
+
+#manuscript .w.ghost::after {
+  content: "👻";
+  font-size: 0.7em;
+  vertical-align: super;
+  opacity: 0.9;
+}
+
+#manuscript-empty, #shelf-empty {
+  color: var(--ink-dim);
+  margin: 6px 0 0;
+  font-style: italic;
+}
+
+#shelf { list-style: none; margin: 0; padding: 0; }
+
+#shelf li {
+  border-top: 1px solid var(--paper-edge);
+  padding: 12px 0;
+}
+
+#shelf li:first-child { border-top: none; }
+
+.book-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: baseline;
+}
+
+.book-title { font-weight: bold; font-size: 1.05rem; }
+.book-meta { color: var(--ink-dim); font-size: 0.9rem; }
+
+.book-actions { margin-left: auto; display: flex; gap: 8px; }
+.book-actions button { padding: 4px 10px; font-size: 0.85rem; }
+
+.book-body {
+  margin: 10px 0 0;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
+#ledger dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+#ledger dl div {
+  border: 1px solid var(--paper-edge);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+#ledger dt { color: var(--ink-dim); font-size: 0.9rem; }
+#ledger dd { margin: 2px 0 0; font-size: 1.4rem; font-weight: bold; }
+
+#storage-banner {
+  background: var(--danger);
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+}
+
+footer {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .page-head h1 { font-size: 1.5rem; }
+  #book-title { width: 100%; }
+  .book-actions { margin-left: 0; }
+}

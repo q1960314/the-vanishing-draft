@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vanishing Draft — 会消失的草稿</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="storage-banner" hidden>浏览器不保存本地数据：草稿与书只保存在这一次打开的页面里，刷新后消失。</div>
+<header class="page-head">
+  <h1>The Vanishing Draft</h1>
+  <p class="tagline">停笔，字就会变成幽灵。继续写，把它们抢回来。</p>
+  <button id="theme-toggle" type="button">切换到浅色羊皮纸</button>
+</header>
+<main>
+  <section id="desk" aria-label="写字桌">
+    <div id="status" role="status">写点什么——停下 5 秒，幽灵就开始动手。</div>
+    <textarea id="editor" rows="8" placeholder="在这里写……停下 5 秒，字就开始变淡。"></textarea>
+    <div id="meter">
+      <span>安全时间：<strong id="meter-safe">—</strong></span>
+      <span>已变幽灵：<strong id="meter-ghosts">0</strong> 个词</span>
+      <span>被带走（累计）：<strong id="meter-lost">0</strong> 个词</span>
+    </div>
+    <div id="actions">
+      <label>书名（可选）<input id="book-title" type="text" placeholder="不填就用正文开头当书名"></label>
+      <button id="save-draft" type="button">保存草稿</button>
+      <button id="bind-book" type="button">装订成书</button>
+      <button id="export-draft" type="button">导出草稿 .txt</button>
+      <button id="export-all" type="button">导出全部书 .md</button>
+    </div>
+  </section>
+
+  <section id="manuscript-wrap" aria-label="手稿">
+    <h2>手稿</h2>
+    <div id="manuscript" aria-live="polite"></div>
+    <p id="manuscript-empty">手稿是空的——写点什么。</p>
+  </section>
+
+  <section id="shelf-wrap" aria-label="书架">
+    <h2>书架</h2>
+    <ul id="shelf"></ul>
+    <p id="shelf-empty">书架是空的——装订第一本书。</p>
+  </section>
+
+  <section id="ledger" aria-label="账本">
+    <h2>账本</h2>
+    <dl>
+      <div><dt>写过的词</dt><dd id="stat-written">0</dd></div>
+      <div><dt>被幽灵带走的词</dt><dd id="stat-lost">0</dd></div>
+      <div><dt>已装订的书</dt><dd id="stat-books">0</dd></div>
+      <div><dt>最长一次连续写作</dt><dd id="stat-run">0 秒</dd></div>
+    </dl>
+  </section>
+</main>
+<footer>
+  <p>客户端单页应用：数据只存在你的浏览器里（localStorage），不发往任何地方。</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
