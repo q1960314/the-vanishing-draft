@@ -1,0 +1,126 @@
+{
+  "checks": [
+    {
+      "name": "page loads with title",
+      "ok": true,
+      "detail": "The Vanishing Draft — 会消失的草稿"
+    },
+    {
+      "name": "editor present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "manuscript present",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "manuscript renders 7 word spans",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "all words start at full opacity",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "first word fading after 5s idle",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "status shows haunting",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "first word is a ghost",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ghost counter reads 1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "one keystroke restores the ghost word",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "first word back at full opacity",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "draft persisted to localStorage",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "draft restored after reload",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shelf shows 1 book",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "localStorage holds 1 book",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "editor cleared after bind",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stats count 1 book bound",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shelf book opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "theme switches to light",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "light theme persists after reload",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "zero console errors",
+      "ok": true,
+      "detail": "none"
+    },
+    {
+      "name": "zero external network requests",
+      "ok": true,
+      "detail": "only local requests: 9"
+    }
+  ],
+  "consoleErrors": [],
+  "networkUrls": [
+    "http://127.0.0.1:8901/index.html",
+    "http://127.0.0.1:8901/styles.css",
+    "http://127.0.0.1:8901/app.js",
+    "http://127.0.0.1:8901/index.html",
+    "http://127.0.0.1:8901/styles.css",
+    "http://127.0.0.1:8901/app.js",
+    "http://127.0.0.1:8901/index.html",
+    "http://127.0.0.1:8901/styles.css",
+    "http://127.0.0.1:8901/app.js"
+  ]
+}
